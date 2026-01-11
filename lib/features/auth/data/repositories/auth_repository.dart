@@ -1,10 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-// final authRepositoryprovider  = Provider((ref)=>AuthRepository(googleSignIn: GoogleSignIn(),));
-final authRepositoryProvider = Provider(
-  (ref) => AuthRepository(googleSignIn: GoogleSignIn.instance),
-);
 
 class AuthRepository {
   final GoogleSignIn _googleSignIn;
@@ -12,7 +6,7 @@ class AuthRepository {
   AuthRepository({required GoogleSignIn googleSignIn})
     : _googleSignIn = googleSignIn;
 
-  void signinwithgoogle() async {
+  Future<GoogleSignInAccount?> signinwithgoogle() async {
     try {
       await _googleSignIn.initialize(
         clientId:
@@ -26,5 +20,9 @@ class AuthRepository {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void>signOut()async{
+    await GoogleSignIn.instance.signOut();
   }
 }
