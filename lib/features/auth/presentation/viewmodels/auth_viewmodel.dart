@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_app/features/auth/data/repositories/auth_repository.dart';
@@ -23,6 +24,7 @@ class AuthViewmodel extends StateNotifier<AuthState> {
   AuthViewmodel(this.repository):super(AuthInitial());
 
   Future<void> signInWithGoogle()async{
+    if(kIsWeb)return;
     try {
       state = AuthLoading();
       final user= await repository.signinwithgoogle();

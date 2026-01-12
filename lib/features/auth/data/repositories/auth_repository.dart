@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepository {
@@ -7,6 +8,7 @@ class AuthRepository {
     : _googleSignIn = googleSignIn;
 
   Future<GoogleSignInAccount?> signinwithgoogle() async {
+    if (kIsWeb) return null;
     try {
       await _googleSignIn.initialize(
         clientId:
@@ -22,7 +24,7 @@ class AuthRepository {
     }
   }
 
-  Future<void>signOut()async{
+  Future<void> signOut() async {
     await GoogleSignIn.instance.signOut();
   }
 }
