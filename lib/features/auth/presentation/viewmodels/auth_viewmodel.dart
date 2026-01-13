@@ -24,7 +24,7 @@ class AuthViewmodel extends StateNotifier<AuthState> {
   AuthViewmodel(this.repository):super(AuthInitial());
 
   Future<void> signInWithGoogle()async{
-    if(kIsWeb)return;
+    // if(kIsWeb)return;
     try {
       state = AuthLoading();
       final user= await repository.signinwithgoogle();

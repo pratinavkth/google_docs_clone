@@ -15,10 +15,6 @@ class GoogleSignInButton extends StatelessWidget {
         text: GSIButtonText.signinWith,
       ),
     );
-    // return GoogleSignInPlugin.registerWith(
-    //   configuration: const GSIButtonConfiguration(
-    //     
-    //   ),
-    // );
+    
   }
 }

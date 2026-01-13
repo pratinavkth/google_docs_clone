@@ -10,14 +10,17 @@ class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
 
+  @override
+  Widget build(BuildContext context) {
     ref.listen<AuthState>(authViewModelProvider, (previous, next) {
       if (next is AuthSuccess) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -31,10 +34,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         ).showSnackBar(SnackBar(content: Text(next.message)));
       }
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     final authState = ref.watch(authViewModelProvider);
 
     // Listen for success or error

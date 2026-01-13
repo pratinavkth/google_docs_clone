@@ -19,6 +19,7 @@ class AuthRepository {
         print(user.displayName);
         print(user.email);
       }
+      return user;
     } catch (e) {
       print(e);
     }
